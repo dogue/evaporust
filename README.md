@@ -7,12 +7,14 @@
 ## Install
 
 ```sh
+git clone https://github.com/dogue/evaporust.git
+cd evaporust
 cargo install --path .
 ```
 
 ## Usage
 
-```sh
+```
 Usage: evaporust [OPTIONS]
 
 Options:
