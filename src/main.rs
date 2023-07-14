@@ -44,7 +44,8 @@ struct Options {
         long,
         short = 'x',
         required = false,
-        help = "List of strings. Paths that contain any of these will be skipped"
+        help = "List of strings. Paths that contain any of these will be skipped",
+        value_delimiter = ','
     )]
     exclude: Vec<String>,
 }
