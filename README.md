@@ -4,6 +4,8 @@
 
 > CLI tool for cleaning up all those Rust projects you're totally going to work on at some point.
 
+Evaporust scans for existing Rust projects (any directory containing a `Cargo.toml`) and runs `cargo clean` on them.
+
 ## Install
 
 ```sh
