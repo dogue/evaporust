@@ -24,7 +24,7 @@ Options:
   -d, --dry-run               Scan for projects but don't actually run `cargo clean`
   -t, --total                 Print total number of projects found
   -l, --list                  Print a list of all projects found
-  -x, --exclude <EXCLUDE>     List of strings. Paths that contain any of these will be skipped
+  -x, --exclude <EXCLUDE>     Comma-separated list of strings. Paths that contain any of these will be skipped
   -h, --help                  Print help
 ```
 
