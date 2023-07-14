@@ -57,10 +57,8 @@ fn main() {
 
     let base_dir = {
         if let Some(s) = options.base_dir {
-            log::info!("Using base_dir {}", s);
             PathBuf::from(s)
         } else {
-            log::info!("Using current directory as base");
             // *probably* wonht ever fail ¯\_(ツ)_/¯
             std::env::current_dir().ok().unwrap()
         }
@@ -79,7 +77,6 @@ fn main() {
     }
 
     if !options.dry_run {
-        log::info!("Cleaning projects");
         walker.clean();
     }
 }
