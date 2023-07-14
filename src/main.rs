@@ -17,7 +17,7 @@ struct Options {
         long,
         short,
         required = false,
-        help = "Scan for projects but donht actually run `cargo clean`",
+        help = "Scan for projects but don't actually run `cargo clean`",
         default_value = "false"
     )]
     dry_run: bool,

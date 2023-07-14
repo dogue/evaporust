@@ -21,7 +21,7 @@ Usage: evaporust [OPTIONS]
 
 Options:
   -b, --base-dir <DIRECTORY>  Directory from which to start scanning for projects
-  -d, --dry-run               Scan for projects but donht actually run `cargo clean`
+  -d, --dry-run               Scan for projects but don't actually run `cargo clean`
   -t, --total                 Print total number of projects found
   -l, --list                  Print a list of all projects found
   -x, --exclude <EXCLUDE>     List of strings. Paths that contain any of these will be skipped
