@@ -1,4 +1,4 @@
-# Welcome to evaporust 👋
+# evaporust
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 [![Twitter: magnum\_dingus](https://img.shields.io/twitter/follow/magnum\_dingus.svg?style=social)](https://twitter.com/magnum\_dingus)
 
