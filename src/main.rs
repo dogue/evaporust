@@ -68,12 +68,12 @@ fn main() -> io::Result<()> {
 
     _ = walker.walk()?;
 
-    if options.total {
-        println!("Found {} projects", walker.projects.len());
-    }
-
     if options.list {
         println!("{:#?}", walker.projects);
+    }
+
+    if options.total {
+        println!("Found {} projects", walker.projects.len());
     }
 
     if !options.dry_run {
