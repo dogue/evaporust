@@ -1,5 +1,6 @@
 use clap::Parser;
 use evaporust::ProjectFinder;
+use spinners::{Spinner, Spinners};
 use std::{io, path::PathBuf};
 
 #[derive(Debug, Parser)]
@@ -66,7 +67,9 @@ fn main() -> io::Result<()> {
 
     let mut walker = ProjectFinder::new(base_dir, options.exclude);
 
+    let mut spin = Spinner::new(Spinners::Dots2, "Scanning for projects...".into());
     _ = walker.walk()?;
+    spin.stop();
 
     if options.list {
         walker.projects.sort();
@@ -74,11 +77,14 @@ fn main() -> io::Result<()> {
     }
 
     if options.total {
-        println!("Found {} projects", walker.projects.len());
+        println!("found {} projects", walker.projects.len());
     }
 
     if !options.dry_run {
+        let mut spin = Spinner::new(Spinners::Dots2, "Cleaning up...".into());
         walker.clean();
+        spin.stop();
+        println!("done.")
     }
 
     Ok(())
