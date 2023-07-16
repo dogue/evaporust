@@ -80,6 +80,9 @@ fn main() -> io::Result<()> {
     _ = walker.walk()?;
     spin.stop();
 
+    // Avoid clobbering the previous output
+    println!();
+
     if options.list {
         walker.projects.sort();
         println!("{:#?}", walker.projects);
