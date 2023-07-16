@@ -7,6 +7,15 @@ use std::{io, path::PathBuf};
 struct Options {
     #[arg(
         long,
+        short = 'a',
+        required = false,
+        help = "Scan and clean all projects, even if they are already clean",
+        default_value = "false"
+    )]
+    all_projects: bool,
+
+    #[arg(
+        long,
         short,
         required = false,
         help = "Directory from which to start scanning for projects",
@@ -65,7 +74,7 @@ fn main() -> io::Result<()> {
         }
     };
 
-    let mut walker = ProjectFinder::new(base_dir, options.exclude);
+    let mut walker = ProjectFinder::new(base_dir, options.exclude, options.all_projects);
 
     let mut spin = Spinner::new(Spinners::Dots2, "Scanning for projects...".into());
     _ = walker.walk()?;

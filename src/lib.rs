@@ -10,16 +10,18 @@ pub struct ProjectFinder {
     base_dir: PathBuf,
     pub projects: Vec<PathBuf>,
     exclude: Vec<String>,
+    all_projects: bool,
 }
 
 impl ProjectFinder {
-    pub fn new(base_dir: PathBuf, exclude: Vec<String>) -> Self {
+    pub fn new(base_dir: PathBuf, exclude: Vec<String>, all_projects: bool) -> Self {
         let projects = Vec::new();
 
         Self {
             base_dir,
             projects,
             exclude,
+            all_projects,
         }
     }
 
@@ -58,6 +60,18 @@ impl ProjectFinder {
                 }
             }
 
+            // hacky workaround because fs::try_exists() is experimental
+            let cleaned = match std::fs::metadata(dir.join("target")) {
+                Ok(_) => false,
+                Err(_) => {
+                    if self.all_projects {
+                        false
+                    } else {
+                        true
+                    }
+                }
+            };
+
             for entry in read_dir(dir.clone())? {
                 let entry = entry?;
                 let path = entry.path();
@@ -68,7 +82,9 @@ impl ProjectFinder {
                 }
 
                 if path.file_name().unwrap() == "Cargo.toml" {
-                    self.projects.push(dir.clone());
+                    if !cleaned {
+                        self.projects.push(dir.clone());
+                    }
                 }
             }
         }
