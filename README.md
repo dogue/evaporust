@@ -6,6 +6,8 @@
 
 Evaporust scans for existing Rust projects (any directory containing a `Cargo.toml`) and runs `cargo clean` on them.
 
+By default, it will only clean projects that contain a `target` directory, indicating the existence of build artifacts.
+
 ## Install
 
 ```sh
@@ -20,6 +22,7 @@ cargo install --path .
 Usage: evaporust [OPTIONS]
 
 Options:
+  -a, --all-projects          Scan and clean all projects, even if they are already clean
   -b, --base-dir <DIRECTORY>  Directory from which to start scanning for projects
   -d, --dry-run               Scan for projects but don't actually run `cargo clean`
   -t, --total                 Print total number of projects found
