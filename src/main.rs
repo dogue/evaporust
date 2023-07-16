@@ -69,6 +69,7 @@ fn main() -> io::Result<()> {
     _ = walker.walk()?;
 
     if options.list {
+        walker.projects.sort();
         println!("{:#?}", walker.projects);
     }
 
