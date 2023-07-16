@@ -47,13 +47,10 @@ impl ProjectFinder {
         dirs.push(self.base_dir.clone());
 
         'walk: while !dirs.is_empty() {
-            let dir = dirs.pop();
-
-            if dir.is_none() {
-                continue;
-            }
-
-            let dir = dir.unwrap();
+            let dir = match dirs.pop() {
+                Some(d) => d,
+                None => continue,
+            };
 
             for path in self.exclude.iter() {
                 if dir.to_string_lossy().contains(path) {
