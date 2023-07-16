@@ -1,6 +1,6 @@
 use clap::Parser;
 use evaporust::ProjectFinder;
-use std::path::PathBuf;
+use std::{io, path::PathBuf};
 
 #[derive(Debug, Parser)]
 struct Options {
@@ -50,7 +50,7 @@ struct Options {
     exclude: Vec<String>,
 }
 
-fn main() {
+fn main() -> io::Result<()> {
     pretty_env_logger::init();
 
     let options = Options::parse();
@@ -59,14 +59,14 @@ fn main() {
         if let Some(s) = options.base_dir {
             PathBuf::from(s)
         } else {
-            // *probably* wonht ever fail ¯\_(ツ)_/¯
+            // *probably* won't ever fail ¯\_(ツ)_/¯
             std::env::current_dir().ok().unwrap()
         }
     };
 
     let mut walker = ProjectFinder::new(base_dir, options.exclude);
 
-    _ = walker.walk();
+    _ = walker.walk()?;
 
     if options.total {
         println!("Found {} projects", walker.projects.len());
@@ -79,4 +79,6 @@ fn main() {
     if !options.dry_run {
         walker.clean();
     }
+
+    Ok(())
 }
