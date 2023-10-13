@@ -29,18 +29,3 @@ Options:
   -x, --exclude <EXCLUDE>     Comma-separated list of strings. Paths that contain any of these will be skipped
   -h, --help                  Print help
 ```
-
-## Author
-
-👤 **dogue**
-
-* Twitter: [@magnum\_dingus](https://twitter.com/magnum\_dingus)
-* Github: [@dogue](https://github.com/dogue)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
